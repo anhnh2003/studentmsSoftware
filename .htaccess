@@ -1,0 +1,23 @@
+# Turn on the rewrite engine
+RewriteEngine On
+# Hide Apache server version and other sensitive information
+ServerSignature Off
+ErrorDocument 403 /studentms/error.html
+# Disable directory listing
+Options -Indexes
+#Deny access to the 'includes' directory
+RewriteRule ^student/includes/ - [F,L]
+#Deny access to the 'includes' directory
+RewriteRule ^admin/includes - [F,L]
+#Deny access to the 'includes' directory
+RewriteRule ^teacher/includes/- [F,L]
+#deny access to the 'phpqrcode' directory
+RewriteRule ^phpqrcode/ - [F,L]
+#deny access to the 'lib' directory
+RewriteRule ^lib/ - [F,L]
+#deny access to the 'includes' directory
+RewriteRule ^includes/dbconnection\.php - [F,L]
+#deny access to the 'database' directory
+RewriteRule ^database/ - [F,L]
+#deny access to the '.htaccess' file
+RewriteRule ^\.htaccess - [F,L]
