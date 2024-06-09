@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['sturecmstuid'] = $_SESSION['sturecmsstuid'];
-
+include('includes/dbconnection.php');
 function updateTestPoint($dbh, $uid, $tid) {
   $sql = "SELECT ID, CorrectAns, Point, ChooseAns FROM tbltest_question q LEFT JOIN (SELECT * FROM tblstudent_question WHERE student_id=:uid) sq ON q.ID = sq.question_id WHERE test_id=:tid";
   $query = $dbh->prepare($sql);
