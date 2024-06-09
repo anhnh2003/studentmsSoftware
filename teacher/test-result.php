@@ -214,22 +214,25 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
                   $results = $query->fetchAll(PDO::FETCH_OBJ);
                   $cnt = 1;
                   if ($query->rowCount() > 0) {
-                    foreach ($results as $row) {
+                    foreach ($results as $r) {
                       ?>
                       <tr>
                         <td><?php echo htmlentities($cnt); ?></td>
-                        <td><?php echo htmlentities($row->Point); ?></td>
+                        <td><?php echo htmlentities($r->Point); ?></td>
                         <td>
                           <?php
-                          $sql = "SELECT sq.student_id, sq.ChooseAns, q.CorrectAns FROM tblstudent_question sq, tbltest_question q WHERE q.ID=sq.question_id";
+                          $sql = "SELECT sq.student_id, sq.Step1, sq.Step2, sq.Step3, sq.Step4, sq.Step5, q.Step1Sol, q.Step2Sol, q.Step3Sol, q.Step4Sol, q.Step5Sol FROM tblstudent_question sq, tbltest_question q WHERE q.ID=sq.question_id AND test_id=:eid";
+
                           $query = $dbh->prepare($sql);
+                      
+                          $query->bindParam(':eid', $eid, PDO::PARAM_STR);
                           $query->execute();
                           $results = $query->fetchAll(PDO::FETCH_OBJ);
                           $correct = 0;
                           $total = 0;
                           if ($query->rowCount() > 0) {
                             foreach ($results as $row) {
-                              if ($row->ChooseAns == $row->CorrectAns) {
+                              if ($row->Step1 == $row->Step1Sol && $row->Step2 == $row->Step2Sol && $row->Step3 == $row->Step3Sol && $row->Step4 == $row->Step4Sol && $row->Step5 == $row->Step5Sol) {
                                 $correct = $correct + 1;
                               }
                               $total = $total + 1;
@@ -239,9 +242,10 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
                             echo htmlentities('N/A');
                           } else {
                             echo htmlentities(round($correct / $total * 100, 2));
+                            
                           }
                           ?></td>
-                        <td><?php echo htmlentities($row->Question); ?></td>
+                        <td><?php echo htmlentities($r->Question); ?></td>
                       </tr>
                       <?php $cnt = $cnt + 1;
                     }

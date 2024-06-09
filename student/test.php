@@ -5,7 +5,7 @@ include('includes/dbconnection.php');
 
 
 function updateTestPoint($dbh, $uid, $tid) {
-  $sql = "SELECT ID,Step1Sol,Step2Sol,Step3Sol,Step4Sol,Step5Sol,Step1, Step2, Step3, Step4, Step5 Point FROM tbltest_question q LEFT JOIN (SELECT * FROM tblstudent_question WHERE student_id=:uid) sq ON q.ID = sq.question_id WHERE test_id=:tid";
+  $sql = "SELECT ID,Step1Sol,Step2Sol,Step3Sol,Step4Sol,Step5Sol,Step1, Step2, Step3, Step4, Step5, Point FROM tbltest_question q LEFT JOIN (SELECT * FROM tblstudent_question WHERE student_id=:uid) sq ON q.ID = sq.question_id WHERE test_id=:tid";
   $query = $dbh->prepare($sql);
   $query->bindParam(':uid', $uid, PDO::PARAM_STR);
   $query->bindParam(':tid', $tid, PDO::PARAM_STR);
@@ -149,9 +149,24 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
         $qid = $_POST['qid'];
         $step1 = $_POST['Step1Sol'];
         $step2 = $_POST['Step2Sol'];
+        if($step2==""){
+          $step2 = null;
+        }
         $step3 = $_POST['Step3Sol'];
         $step4 = $_POST['Step4Sol'];
         $step5 = $_POST['Step5Sol'];
+        if($step5==""){
+          $step5 = null;
+        }
+        if($step4==""){
+          $step4 = null;
+        }
+        if($step3==""){
+          $step3 = null;
+        }
+        if($step1==""){
+          $step1 = null;
+        }
 
 
         $sql = "SELECT * from tblstudent_question where student_id=:uid and question_id=:qid";
@@ -261,53 +276,46 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
                         <textarea name="qname" rows="<?php echo ceil(strlen($row->Question) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Question); ?></textarea>
                         </div>
                         <div class="form-group">
+                        <label for="exampleInputName1">Step 1 Description</label>
                         <textarea name="step1des" rows="<?php echo ceil(strlen($row->Step1Des) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Step1Des); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 1 Solution</label>
-                        <input type="text" name="Step1Sol"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add answer">
-                      </div>
+                        <textarea name="Step1Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step1); ?></textarea>
+                        </div>
                         <div class="form-group">
+                        <label for="exampleInputName1">Step 2 Description</label>
                         <textarea name="step2des" rows="<?php echo ceil(strlen($row->Step2Des) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Step2Des); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 2 Solution</label>
-                        <input type="text" name="Step2Sol"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add answer">
-                      </div>
+                        <textarea name="Step2Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step2); ?></textarea>
+                        </div>
                         <div class="form-group">
+                        <label for="exampleInputName1">Step 3 Description</label>
                         <textarea name="step3des" rows="<?php echo ceil(strlen($row->Step3Des) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Step3Des); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 3 Solution</label>
-                        <input type="text" name="Step3Sol"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add answer">
-                      </div>
+                        <textarea name="Step3Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step3); ?></textarea>
+                        </div>
                       
                         <div class="form-group">
+                        <label for="exampleInputName1">Step 4 Description</label>
                         <textarea name="step4des" rows="<?php echo ceil(strlen($row->Step4Des) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Step4Des); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 4 Solution</label>
-                        <input type="text" name="Step4Sol"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add answer">
-                             
-                      </div>
+                        <textarea name="Step4Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step4); ?></textarea>
+                        </div>
                         <div class="form-group">
+                        <label for="exampleInputName1">Step 5 Description</label>
                         <textarea name="step5des" rows="<?php echo ceil(strlen($row->Step5Des) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Step5Des); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 5 Solution</label>
-                        <input type="text" name="Step4Sol"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add answer">
-                             
-                      </div>
+                        <textarea name="Step5Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step5); ?></textarea>
+                        </div>
                         
                       <div class="text-center">
                       <button type="submit" class="btn btn-primary mr-2" name="choose">Save</button>

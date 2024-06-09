@@ -50,7 +50,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
     $eid = $_GET['editid'];
     $qname = $_POST['qname'];
     $point = $_POST['point'];
-    $tep1Des = $_POST['Step1Des'];
+    $step1Des = $_POST['Step1Des'];
     if ($step1Des== '') $step1Des = "Untitled";
     $step2Des = $_POST['Step2Des'];
     if ($step2Des == '') $step2Des = null;
@@ -90,6 +90,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
     $query->execute();
 
     echo '<script>alert("Question has been updated")</script>';
+    echo "<script>window.location.href ='test-detail.php?editid=$tid'</script>";
   }
 
   if (isset($_POST['delete'])) {
@@ -156,6 +157,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
                 $query->bindParam(':eid', $eid, PDO::PARAM_STR);
                 $query->execute();
                 $results = $query->fetchAll(PDO::FETCH_OBJ);
+                
                 $cnt = 1;
                 if ($query->rowCount() > 0) {
                   foreach ($results as $row) {
@@ -173,66 +175,47 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
                              class="form-control" required='true' pattern="[0-9]+">
                       </div>
                     
-                      <div class="form-group">
+                        <div class="form-group">
                         <label for="exampleInputName1">Step 1 Description</label>
-                        <input type="text" name="Step1Des"
-                             value="<?php echo htmlentities($row->Step1Des); ?>"
-                             class="form-control" required='true' placeholder="Add a detail of what the students are expected to do in this step">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Step 2 Description</label>
-                        <input type="text" name="Step2Des"
-                             value="<?php echo htmlentities($row->Step2Des); ?>"
-                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Step 3 Description</label>
-                        <input type="text" name="Step3Des"
-                             value="<?php echo htmlentities($row->Step3Des); ?>"
-                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Step 4 Description</label>
-                        <input type="text" name="Step4Des"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Step 5 Description</label>
-                        <input type="text" name="Step5Des"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
-                      </div>
-                      <div class="form-group">
+                        <textarea name="Step1Des" rows=8 class="form-control" required='true' placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step1Des); ?></textarea>
+                        </div>
+                        <div class="form-group">
                         <label for="exampleInputName1">Step 1 Solution</label>
-                        <input type="text" name="Step1Sol"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add answer">
-                      </div>
-                      <div class="form-group">
+                        <textarea name="Step1Sol" rows=8 class="form-control" required='true'><?php echo htmlentities($row->Step1Sol); ?></textarea>
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleInputName1">Step 2 Description</label>
+                        <textarea name="Step2Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step2Des); ?></textarea>
+                        </div>
+                        <div class="form-group">
                         <label for="exampleInputName1">Step 2 Solution</label>
-                        <input type="text" name="Step2Sol"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add answer">
-                      </div>
-                      <div class="form-group">
+                        <textarea name="Step2Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step2Sol); ?></textarea>
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleInputName1">Step 3 Description</label>
+                        <textarea name="Step3Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step3Des); ?></textarea>
+                        </div>
+                        <div class="form-group">
                         <label for="exampleInputName1">Step 3 Solution</label>
-                        <input type="text" name="Step3Sol"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add answer">
-                      </div>
-                      <div class="form-group">
+                        <textarea name="Step3Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step3Sol); ?></textarea>
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleInputName1">Step 4 Description</label>
+                        <textarea name="Step4Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step4Des); ?></textarea>
+                        </div>
+                        <div class="form-group">
                         <label for="exampleInputName1">Step 4 Solution</label>
-                        <input type="text" name="Step4Sol"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add answer">
-                      </div>
-                      <div class="form-group">
+                        <textarea name="Step4Sol" rows=8 class="form-control"  placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step4Sol); ?></textarea>
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleInputName1">Step 5 Description</label>
+                        <textarea name="Step5Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step5Des); ?></textarea>
+                        </div>
+                        <div class="form-group">
                         <label for="exampleInputName1">Step 5 Solution</label>
-                        <input type="text" name="Step5Sol"
-                             value="<?php echo htmlentities($row->Step4Des); ?>"
-                             class="form-control" placeholder="Add answer">
-                      </div>
+                        <textarea name="Step5Sol" rows=8 class="form-control"  placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step5Sol); ?></textarea>
+                        </div>
+                      
                       <?php $cnt = $cnt + 1; 
                   }
                 } ?>
