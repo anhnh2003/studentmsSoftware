@@ -1,11 +1,11 @@
 <?php
 session_start();
+$_SESSION['sturecmstuid'] = $_SESSION['sturecmsstuid'];
 include('includes/dbconnection.php');
 
-$_SESSION['sturecmstuid'] = $_SESSION['sturecmsstuid'];
 
 function updateTestPoint($dbh, $uid, $tid) {
-  $sql = "SELECT ID, CorrectAns, Point, ChooseAns FROM tbltest_question q LEFT JOIN (SELECT * FROM tblstudent_question WHERE student_id=:uid) sq ON q.ID = sq.question_id WHERE test_id=:tid";
+  $sql = "SELECT ID,Step1Sol,Step2Sol,Step3Sol,Step4Sol,Step5Sol,Step1, Step2, Step3, Step4, Step5 Point FROM tbltest_question q LEFT JOIN (SELECT * FROM tblstudent_question WHERE student_id=:uid) sq ON q.ID = sq.question_id WHERE test_id=:tid";
   $query = $dbh->prepare($sql);
   $query->bindParam(':uid', $uid, PDO::PARAM_STR);
   $query->bindParam(':tid', $tid, PDO::PARAM_STR);
@@ -14,7 +14,7 @@ function updateTestPoint($dbh, $uid, $tid) {
 
   $point = 0;
   foreach ($results as $row) {
-    if ($row->CorrectAns == $row->ChooseAns) {
+    if ($row->Step1 == $row->Step1Sol && $row->Step2 == $row->Step2Sol && $row->Step3 == $row->Step3Sol && $row->Step4 == $row->Step4Sol && $row->Step5 == $row->Step5Sol) {
       $point += $row->Point;
     }
   }
@@ -225,7 +225,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
           </nav>
         </div>
                 <?php
-                $sql = "SELECT ID, Question, AnsA, AnsB, AnsC, AnsD, CorrectAns, Point, ChooseAns FROM tbltest_question q LEFT JOIN (SELECT * FROM tblstudent_question WHERE student_id=:uid) sq ON q.ID = sq.question_id WHERE test_id=:tid";
+                $sql = "SELECT ID, Question, ,Step1Des, Step2Des, Step3Des,Step4Des,Step5Des Point, Step1, Step2, Step3, Step4, Step5 FROM tbltest_question q LEFT JOIN (SELECT * FROM tblstudent_question WHERE student_id=:uid) sq ON q.ID = sq.question_id WHERE test_id=:tid";
                 $query = $dbh->prepare($sql);
                 $query->bindParam(':uid', $uid, PDO::PARAM_STR);
                 $query->bindParam(':tid', $tid, PDO::PARAM_STR);
@@ -271,30 +271,77 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
                         <div class="form-group">
                         <textarea name="qname" rows="<?php echo ceil(strlen($row->Question) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Question); ?></textarea>
                         </div>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="answer" value="A" <?php echo htmlentities($checkedAnsA); ?>>
-                              A. <?php echo htmlentities($row->AnsA); ?>
-                            </label>
-                          </div>
-                          <div class="form-check" style="<?php echo $isAnsBShow; ?>">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="answer" value="B" <?php echo htmlentities($checkedAnsB); ?>>
-                              B. <?php echo htmlentities($row->AnsB); ?>
-                            </label>
-                          </div>
-                          <div class="form-check" style="<?php echo $isAnsCShow; ?>">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="answer" value="C" <?php echo htmlentities($checkedAnsC); ?>>
-                              C. <?php echo htmlentities($row->AnsC); ?>
-                            </label>
-                          </div>
-                          <div class="form-check" style="<?php echo $isAnsDShow; ?>">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="answer" value="D" <?php echo htmlentities($checkedAnsD); ?>>
-                              D. <?php echo htmlentities($row->AnsD); ?>
-                            </label>
-                          </div>
+                        <div class="form-group">
+                          <label for="exampleInputName1">Question</label>
+                          <textarea name="qname" class="form-control" rows="10" required='true'><?php echo htmlentities($row->Question); ?></textarea>
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleInputName1">Point</label>
+                        <input type="text" name="point"
+                             value="<?php echo htmlentities($row->Point); ?>"
+                             class="form-control" required='true' pattern="[0-9]+">
+                      </div>
+                    
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 1 Description</label>
+                        <input type="text" name="Step1Des"
+                             value="<?php echo htmlentities($row->Step1Des); ?>"
+                             class="form-control" required='true' placeholder="Add a detail of what the students are expected to do in this step">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 2 Description</label>
+                        <input type="text" name="Step2Des"
+                             value="<?php echo htmlentities($row->Step2Des); ?>"
+                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 3 Description</label>
+                        <input type="text" name="Step3Des"
+                             value="<?php echo htmlentities($row->Step3Des); ?>"
+                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 4 Description</label>
+                        <input type="text" name="Step4Des"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 5 Description</label>
+                        <input type="text" name="Step5Des"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 1 Solution</label>
+                        <input type="text" name="Step1Sol"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add answer">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 2 Solution</label>
+                        <input type="text" name="Step2Sol"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add answer">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 3 Solution</label>
+                        <input type="text" name="Step3Sol"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add answer">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 4 Solution</label>
+                        <input type="text" name="Step4Sol"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add answer">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 5 Solution</label>
+                        <input type="text" name="Step5Sol"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add answer">
+                      </div>
                       <div class="text-center">
                       <button type="submit" class="btn btn-primary mr-2" name="choose">Save</button>
                       </div>

@@ -62,7 +62,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
 
   if (isset($_POST['new_ques'])) {
     $eid = $_GET['editid'];
-    $sql = "INSERT INTO tbltest_question(test_id, Question, AnsA, CorrectAns, Point) VALUES(:eid, 'Untitled Question', 'Untitled', 'A', 0)";
+    $sql = "INSERT INTO tbltest_question(test_id, Question, Step1Des, Step1Sol, Point) VALUES(:eid, 'Untitled Question', 'Untitled','Untitled', 0)";
     $query = $dbh->prepare($sql);
     $query->bindParam(':eid', $eid, PDO::PARAM_STR);
     $query->execute();

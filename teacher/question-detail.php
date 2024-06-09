@@ -50,25 +50,42 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
     $eid = $_GET['editid'];
     $qname = $_POST['qname'];
     $point = $_POST['point'];
-    $correct_ans = $_POST['correct_ans'];
-    $ansA = $_POST['ansA'];
-    if ($ansA == '') $ansA = "Untitled";
-    $ansB = $_POST['ansB'];
-    if ($ansB == '') $ansB = null;
-    $ansC = $_POST['ansC'];
-    if ($ansC == '') $ansC = null;
-    $ansD = $_POST['ansD'];
-    if ($ansD == '') $ansD = null;
+    $tep1Des = $_POST['Step1Des'];
+    if ($step1Des== '') $step1Des = "Untitled";
+    $step2Des = $_POST['Step2Des'];
+    if ($step2Des == '') $step2Des = null;
+    $step3Des = $_POST['Step3Des'];
+    if ($step3Des == '') $step3Des = null;
+    $step4Des = $_POST['Step4Des'];
+    if ($step4Des == '') $step4Des = null;
+    $step5Des = $_POST['Step5Des'];
+    if ($step5Des == '') $step5Des = null;
+    $step1Sol = $_POST['Step1Sol'];
+    if ($step1Sol == '') $step1Sol = null;
+    $step2Sol = $_POST['Step2Sol'];
+    if ($step2Sol == '') $step2Sol = null;
+    $step3Sol = $_POST['Step3Sol'];
+    if ($step3Sol == '') $step3Sol = null;
+    $step4Sol = $_POST['Step4Sol'];
+    if ($step4Sol == '') $step4Sol = null;
+    $step5Sol = $_POST['Step5Sol'];
+    if ($step5Sol == '') $step5Sol = null;
 
-    $sql = "UPDATE tbltest_question SET Question=:qname, Point=:point, CorrectAns=:correct_ans, AnsA=:ansA, AnsB=:ansB, AnsC=:ansC, AnsD=:ansD WHERE ID=:eid";
+
+    $sql = "UPDATE tbltest_question SET Question=:qname, Point=:point   , Step1Des=:Step1Des, Step2Des=:Step2Des, Step3Des=:Step3Des, Step4Des=:Step4Des, Step5Des=:Step5Des,Step1Sol=:Step1Sol, Step2Sol=:Step2Sol, Step3Sol=:Step3Sol, Step4Sol=:Step4Sol, Step5Sol=:Step5Sol WHERE ID=:eid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':qname', $qname, PDO::PARAM_STR);
     $query->bindParam(':point', $point, PDO::PARAM_STR);
-    $query->bindParam(':correct_ans', $correct_ans, PDO::PARAM_STR);
-    $query->bindParam(':ansA', $ansA, PDO::PARAM_STR);
-    $query->bindParam(':ansB', $ansB, PDO::PARAM_STR);
-    $query->bindParam(':ansC', $ansC, PDO::PARAM_STR);
-    $query->bindParam(':ansD', $ansD, PDO::PARAM_STR);
+    $query->bindParam(':Step1Des', $step1Des, PDO::PARAM_STR);
+    $query->bindParam(':Step2Des', $step2Des, PDO::PARAM_STR);
+    $query->bindParam(':Step3Des', $step3Des, PDO::PARAM_STR);
+    $query->bindParam(':Step4Des', $step4Des, PDO::PARAM_STR);
+    $query->bindParam(':Step5Des', $step5Des, PDO::PARAM_STR);
+    $query->bindParam(':Step1Sol', $step1Sol, PDO::PARAM_STR);
+    $query->bindParam(':Step2Sol', $step2Sol, PDO::PARAM_STR);
+    $query->bindParam(':Step3Sol', $step3Sol, PDO::PARAM_STR);
+    $query->bindParam(':Step4Sol', $step4Sol, PDO::PARAM_STR);
+    $query->bindParam(':Step5Sol', $step5Sol, PDO::PARAM_STR);
     $query->bindParam(':eid', $eid, PDO::PARAM_STR);
     $query->execute();
 
@@ -155,52 +172,68 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
                              value="<?php echo htmlentities($row->Point); ?>"
                              class="form-control" required='true' pattern="[0-9]+">
                       </div>
+                    
                       <div class="form-group">
-                        <label for="exampleInputName1">Correct Answer</label>
-                        <select name="correct_ans" class="form-control" required='true'>
-                          <option value="A" <?php if ($row->CorrectAns == 'A') {
-                            echo 'selected';
-                          } ?>>A
-                          </option>
-                          <option value="B" <?php if ($row->CorrectAns == 'B') {
-                            echo 'selected';
-                          } ?>>B
-                          </option>
-                          <option value="C" <?php if ($row->CorrectAns == 'C') {
-                            echo 'selected';
-                          } ?>>C
-                          </option>
-                          <option value="D" <?php if ($row->CorrectAns == 'D') {
-                            echo 'selected';
-                          } ?>>D
-                          </option>
-                        </select>
+                        <label for="exampleInputName1">Step 1 Description</label>
+                        <input type="text" name="Step1Des"
+                             value="<?php echo htmlentities($row->Step1Des); ?>"
+                             class="form-control" required='true' placeholder="Add a detail of what the students are expected to do in this step">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Answer A</label>
-                        <input type="text" name="ansA"
-                             value="<?php echo htmlentities($row->AnsA); ?>"
-                             class="form-control" required='true' placeholder="Add answer">
+                        <label for="exampleInputName1">Step 2 Description</label>
+                        <input type="text" name="Step2Des"
+                             value="<?php echo htmlentities($row->Step2Des); ?>"
+                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Answer B</label>
-                        <input type="text" name="ansB"
-                             value="<?php echo htmlentities($row->AnsB); ?>"
+                        <label for="exampleInputName1">Step 3 Description</label>
+                        <input type="text" name="Step3Des"
+                             value="<?php echo htmlentities($row->Step3Des); ?>"
+                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 4 Description</label>
+                        <input type="text" name="Step4Des"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 5 Description</label>
+                        <input type="text" name="Step5Des"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add a detail of what the students are expected to do in this step">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 1 Solution</label>
+                        <input type="text" name="Step1Sol"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
                              class="form-control" placeholder="Add answer">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Answer C</label>
-                        <input type="text" name="ansC"
-                             value="<?php echo htmlentities($row->AnsC); ?>"
+                        <label for="exampleInputName1">Step 2 Solution</label>
+                        <input type="text" name="Step2Sol"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
                              class="form-control" placeholder="Add answer">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputName1">Answer D</label>
-                        <input type="text" name="ansD"
-                             value="<?php echo htmlentities($row->AnsD); ?>"
+                        <label for="exampleInputName1">Step 3 Solution</label>
+                        <input type="text" name="Step3Sol"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
                              class="form-control" placeholder="Add answer">
                       </div>
-                      <?php $cnt = $cnt + 1;
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 4 Solution</label>
+                        <input type="text" name="Step4Sol"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add answer">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Step 5 Solution</label>
+                        <input type="text" name="Step5Sol"
+                             value="<?php echo htmlentities($row->Step4Des); ?>"
+                             class="form-control" placeholder="Add answer">
+                      </div>
+                      <?php $cnt = $cnt + 1; 
                   }
                 } ?>
 

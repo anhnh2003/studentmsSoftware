@@ -1,7 +1,5 @@
 <?php
 session_start();
-include('includes/dbconnection.php');
-
 $_SESSION['sturecmstuid'] = $_SESSION['sturecmsstuid'];
 
 function updateTestPoint($dbh, $uid, $tid) {
@@ -12,7 +10,7 @@ function updateTestPoint($dbh, $uid, $tid) {
   $query->execute();
   $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-  $point = 0;
+  $point = 0; 
   foreach ($results as $row) {
     if ($row->CorrectAns == $row->ChooseAns) {
       $point += $row->Point;
