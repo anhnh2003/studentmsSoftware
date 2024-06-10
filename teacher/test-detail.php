@@ -232,6 +232,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
   <!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
+<script src="./js/textareaValidation.js"></script>
 <!-- plugins:js -->
 <script src="vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->

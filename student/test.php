@@ -344,6 +344,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
   </div>
   <!-- page-body-wrapper ends -->
 </div>
+<script src="./js/inputValidation.js"></script>
 <!-- container-scroller -->
 <!-- plugins:js -->
 <script src="vendors/js/vendor.bundle.base.js"></script>

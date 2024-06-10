@@ -177,44 +177,53 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
                     
                         <div class="form-group">
                         <label for="exampleInputName1">Step 1 Description</label>
-                        <textarea name="Step1Des" rows=8 class="form-control" required='true' placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step1Des); ?></textarea>
+                        <textarea name="Step1Des" rows=8 class="form-control" oninput="checkInputLength(this)" required='true' placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step1Des); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 1 Solution</label>
-                        <textarea name="Step1Sol" rows=8 class="form-control" required='true'><?php echo htmlentities($row->Step1Sol); ?></textarea>
+                        <textarea name="Step1Sol" rows=8 class="form-control" required='true' oninput="checkInputLength(this)"><?php echo htmlentities($row->Step1Sol); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 2 Description</label>
-                        <textarea name="Step2Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step2Des); ?></textarea>
+                        <textarea name="Step2Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step" oninput="checkInputLength(this)" ><?php echo htmlentities($row->Step2Des); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 2 Solution</label>
-                        <textarea name="Step2Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step2Sol); ?></textarea>
+                        <textarea name="Step2Sol" rows=8 class="form-control" oninput="checkInputLength(this)"><?php echo htmlentities($row->Step2Sol); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 3 Description</label>
-                        <textarea name="Step3Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step3Des); ?></textarea>
+                        <textarea name="Step3Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step" oninput="checkInputLength(this)"><?php echo htmlentities($row->Step3Des); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 3 Solution</label>
-                        <textarea name="Step3Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step3Sol); ?></textarea>
+                        <textarea name="Step3Sol" rows=8 class="form-control" oninput="checkInputLength(this)"><?php echo htmlentities($row->Step3Sol); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 4 Description</label>
-                        <textarea name="Step4Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step4Des); ?></textarea>
+                        <textarea name="Step4Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step" oninput="checkInputLength(this)"><?php echo htmlentities($row->Step4Des); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 4 Solution</label>
-                        <textarea name="Step4Sol" rows=8 class="form-control"  placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step4Sol); ?></textarea>
+                        <textarea name="Step4Sol" rows=8 class="form-control"  placeholder="Add a detail of what the students are expected to do in this step" oninput="checkInputLength(this)"><?php echo htmlentities($row->Step4Sol); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 5 Description</label>
-                        <textarea name="Step5Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step5Des); ?></textarea>
+                        <textarea name="Step5Des" rows=8 class="form-control" placeholder="Add a detail of what the students are expected to do in this step" oninput="checkInputLength(this)"><?php echo htmlentities($row->Step5Des); ?></textarea>
                         </div>
                         <div class="form-group">
                         <label for="exampleInputName1">Step 5 Solution</label>
-                        <textarea name="Step5Sol" rows=8 class="form-control"  placeholder="Add a detail of what the students are expected to do in this step"><?php echo htmlentities($row->Step5Sol); ?></textarea>
+                        <textarea name="Step5Sol" rows=8 class="form-control"  placeholder="Add a detail of what the students are expected to do in this step" oninput="checkInputLength(this)"><?php echo htmlentities($row->Step5Sol); ?></textarea>
                         </div>
+                        <script>
+                        function checkInputLength(input) {
+                            if (input.value.length > 255) {
+                                input.setCustomValidity('Input must be less than 255 characters');
+                            } else {
+                                input.setCustomValidity('');
+                            }
+                        }
+                        </script>
                       
                       <?php $cnt = $cnt + 1; 
                   }

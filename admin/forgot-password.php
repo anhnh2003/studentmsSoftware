@@ -152,6 +152,7 @@ if (isset($_POST['confirm'])) {
                                 <div class="form-group" style="<?php echo $hideOTP; ?>">
                                     <input class="form-control form-control-lg" type="text" name="otp" placeholder="Enter OTP sent to Email" maxlength='6' required='true' pattern="[0-9]+" />
                                 </div>
+                                
                                 <div class="mt-3" style="<?php echo $btnConfirm; ?>">
                                     <button class="btn btn-success btn-block loginbtn" name="confirm" type="submit">Confirm OTP</button>
                                 </div>
