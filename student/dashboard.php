@@ -29,7 +29,7 @@ if (strlen($_SESSION['sturecmsstuid']) == 0) {
 <html lang="en">
   <head>
    
-    <title>Student  Management System|||Dashboard</title>
+    <title>MathEx|||Dashboard</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">

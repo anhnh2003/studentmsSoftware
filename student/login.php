@@ -158,7 +158,7 @@ if (isset($_POST['confirm'])) {
 <html lang="en">
   <head>
   
-    <title>Student Management System || Student Login</title>
+    <title>MathEx || Student Login</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -182,7 +182,7 @@ if (isset($_POST['confirm'])) {
                 <div class="brand-logo">
                   <img src="images/logo.svg">
                 </div>
-                <h4 style="<?php echo $hideLogin; ?>">Hello! Let's get started</h4>
+                <h4 style="<?php echo $hideLogin; ?>">Hello Student! Let's get started.</h4>
                 <h6 class="font-weight-light" style="<?php echo $hideLogin; ?>">Sign in to continue. </h6>
                 <form class="pt-3" id="user_login" method="post" name="user_login" style="<?php echo $hideLogin; ?>">
                   <div class="form-group">

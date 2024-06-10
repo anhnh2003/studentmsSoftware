@@ -179,7 +179,7 @@ if (isset($_POST['confirm'])) {
                 <div class="brand-logo">
                   <img src="images/logo.svg">
                 </div>
-                <h4 style="<?php echo $hideLogin; ?>">Hello! Let's get started</h4>
+                <h4 style="<?php echo $hideLogin; ?>">Hello Teacher! Let's get started.</h4>
                 <h6 class="font-weight-light" style="<?php echo $hideLogin; ?>">Sign in to continue. </h6>
                 <form class="pt-3" id="user_login" method="post" name="user_login" style="<?php echo $hideLogin; ?>">
                   <div class="form-group">

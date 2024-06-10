@@ -33,7 +33,7 @@ $cnt=1;
     <!-- container -->
     <div class="container">
       <div class="copyright-left">
-      <p>© <?php echo date('Y');?> Student Management System </p>
+      <p>© <?php echo date('Y');?> add1c7 </p>
       </div>
       <div class="copyright-right">
         <ul>
@@ -42,7 +42,7 @@ $cnt=1;
 
           <!-- Add font awesome icons -->
           <li><a href="https://www.facebook.com/SoictOfficially/" class="fa fa-facebook"></a></li>
-          <li><a href="https://github.com/anhnh2003/ClassManagement" class="fa fa-github"></a></li>
+          <li><a href="https://github.com/anhnh2003/studentmsSoftware" class="fa fa-github"></a></li>
         </ul>
       </div>
       <div class="clearfix"> </div>

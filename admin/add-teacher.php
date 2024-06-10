@@ -91,7 +91,7 @@ echo "<script>alert('Username or Teacher Id  already exist. Please try again');<
 <html lang="en">
   <head>
    
-    <title>Student  Management System || Add Teacher</title>
+    <title>MathEx || Add Teacher</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">

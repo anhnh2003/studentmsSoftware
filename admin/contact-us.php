@@ -51,7 +51,7 @@ echo '<script>alert("Contact us has been updated")</script>';
 <html lang="en">
   <head>
    
-    <title>Student  Management System|| Update Contact Us</title>
+    <title>MathEx || Update Contact Us</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">

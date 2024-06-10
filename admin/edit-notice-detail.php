@@ -48,7 +48,7 @@ if (strlen($_SESSION['sturecmsaid']) == 0) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Student Management System || Update Notice</title>
+  <title>MathEx || Update Notice</title>
   <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
