@@ -42,7 +42,7 @@ include('includes/dbconnection.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Student Management System ||| Manage Notice</title>
+  <title>MathEx ||| Manage Notice</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">

@@ -52,7 +52,7 @@ $query->bindParam(':eid',$eid,PDO::PARAM_STR);
 <html lang="en">
   <head>
    
-    <title>Student Management System || Update Student</title>
+    <title>MathEx || Update Student</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">

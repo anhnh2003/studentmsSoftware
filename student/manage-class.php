@@ -62,7 +62,7 @@ if ((strlen($_SESSION['sturecmsstuid'])== 0 )||( strlen($_COOKIE['uid']) == 0) |
 <html lang="en">
 
 <head>
-  <title>Student Management System || My Class</title>
+  <title>MathEx || My Class</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">

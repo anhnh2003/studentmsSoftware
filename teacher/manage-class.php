@@ -30,7 +30,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
 <html lang="en">
 
 <head>
-  <title>Student Management System || My Class</title>
+  <title>MathEx || My Class</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">

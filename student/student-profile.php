@@ -67,7 +67,7 @@ if (strlen($_SESSION['sturecmsstuid']) == 0) {
 <html lang="en">
   <head>
    
-    <title>Student Management System || Student Profile</title>
+    <title>MathEx || Student Profile</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">

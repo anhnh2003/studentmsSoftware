@@ -99,7 +99,7 @@ echo "<script type='text/javascript'> document.location ='dashboard.php'; </scri
 <html lang="en">
   <head>
   
-    <title>Student  Management System|| Login Page</title>
+    <title>MathEx || Login Page</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -123,7 +123,7 @@ echo "<script type='text/javascript'> document.location ='dashboard.php'; </scri
                 <div class="brand-logo">
                   <img src="images/logo.svg">
                 </div>
-                <h4>Hello! Let's get started</h4>
+                <h4>Hello Admin! Let's get started.</h4>
                 <h6 class="font-weight-light">Sign in to continue.</h6>
                 
                 <form class="pt-3" id="login" method="post" name="login">
