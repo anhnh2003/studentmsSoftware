@@ -181,5 +181,6 @@ if (strlen($_SESSION['sturecmsaid']) == 0) {
     <!-- Custom js for this page -->
     <script src="js/dashboard.js"></script>
     <!-- End custom js for this page -->
+    <script src="../js/inputValidation.js"></script>
   </body>
 </html><?php } } ?>

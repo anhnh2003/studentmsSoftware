@@ -48,13 +48,13 @@ function generateSessionToken($dbh, $userid, $uid) {
   $tokenQuery->execute();
 
   // Send the token to the client to save it
-  setcookie("session_token", $token, time() + 7200,"/","",0,1); // 7200 seconds = 2 hours
+  setcookie("session_token", $token, time() + 7200, "/studentmsSoftware/teacher","",0,1); // 7200 seconds = 2 hours
 
   if(!empty($_POST["remember"])) {
     //COOKIES for username
-    setcookie ("uid",$uid,time()+3600,"","",0,1);
+    setcookie ("uid",$uid,time()+3600,"/studentmsSoftware/teacher","",0,1);
   } else {
-    setcookie ("uid",$uid,time()+7200,"","",0,1);
+    setcookie ("uid",$uid,time()+7200,"/studentmsSoftware/teacher","",0,1);
   }
 
   $_SESSION['login']=$_POST['username'];

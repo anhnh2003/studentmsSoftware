@@ -52,18 +52,20 @@ function generateSessionToken($dbh, $userid, $uid) {
   $tokenQuery->execute();
 
   // Send the token to the client to save it
-  setcookie("session_token", $token, time() + 7200,"","",false,true); // 7200 seconds = 2 hours
-
+  //setcookie("session_token", $token, time() + 7200, "/student","",false,true); // 7200 seconds = 2 hours
+  //set the cookie session_token to same site = strict and can only be accessed in /student directory
+  setcookie("session_token", $token, time() + 7200, "/studentmsSoftware/student", "", false, true);
   if(!empty($_POST["remember"])) {
     //COOKIES for username
-    setcookie ("uid",$uid,time()+3600,"","",false,true);
+    setcookie ("uid",$uid,time()+3600,"/studentmsSoftware/student","",false,true);
   } else {
-    setcookie ("uid",$uid,time()+7200,"","",false,true);
+    setcookie ("uid",$uid,time()+7200,"/studentmsSoftware/student","",false,true);
   }
 
   $_SESSION['login']=$_POST['username'];
 
   echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
+  //echo $token;
 }
 
 if(isset($_POST['login'])) 
@@ -124,6 +126,8 @@ if(password_verify($password, $result->Password)){
     $mail->smtpClose();
   } else {
     generateSessionToken($dbh, $result->StuID, $result->ID);
+    
+
   }
 } else {
   $_SESSION['error'] = "Wrong username or password.";

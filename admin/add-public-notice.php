@@ -130,5 +130,6 @@ if (strlen($_SESSION['sturecmsaid']) == 0) {
 <script src="js/typeahead.js"></script>
 <script src="js/select2.js"></script>
 <!-- End custom js for this page -->
+<script src="../js/inputValidation.js"></script>
 </body>
 </html>

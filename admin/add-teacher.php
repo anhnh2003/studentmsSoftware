@@ -204,5 +204,6 @@ echo "<script>alert('Username or Teacher Id  already exist. Please try again');<
     <script src="js/typeahead.js"></script>
     <script src="js/select2.js"></script>
     <!-- End custom js for this page -->
+    <script src="../js/inputValidation.js"></script>
   </body>
 </html><?php }}  ?>

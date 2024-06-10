@@ -54,6 +54,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
     header('location:logout.php');
     exit();
   } else {
+
     $uid = $_COOKIE['uid'] ?? '';
     $tid = $_GET['testid'];
 
@@ -69,6 +70,8 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
       header('location:manage-test.php');
       exit();
     }
+    //check if student has already started the test
+
 
     $sql = "SELECT * from tblstudent_test where student_id=:uid and test_id=:tid";
     $query = $dbh->prepare($sql);
@@ -101,7 +104,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
           if ($currentDateTime > $endTime) {
             $uid = $_COOKIE['uid'] ?? '';
             $tid = $_GET['testid'];
-            updateTestPoint($dbh, $uid, $tid);
+            //updateTestPoint($dbh, $uid, $tid);
           }
           echo '<script>alert("Test has not started or ended.")</script>';
           echo '<script>window.location.replace("test-detail.php?editid=' . $tid. '")</script>';
@@ -275,48 +278,20 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
                         <div class="form-group">
                         <textarea name="qname" rows="<?php echo ceil(strlen($row->Question) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Question); ?></textarea>
                         </div>
-                        <div class="form-group">
-                        <label for="exampleInputName1">Step 1 Description</label>
-                        <textarea name="step1des" rows="<?php echo ceil(strlen($row->Step1Des) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Step1Des); ?></textarea>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleInputName1">Step 1 Solution</label>
-                        <textarea name="Step1Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step1); ?></textarea>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleInputName1">Step 2 Description</label>
-                        <textarea name="step2des" rows="<?php echo ceil(strlen($row->Step2Des) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Step2Des); ?></textarea>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleInputName1">Step 2 Solution</label>
-                        <textarea name="Step2Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step2); ?></textarea>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleInputName1">Step 3 Description</label>
-                        <textarea name="step3des" rows="<?php echo ceil(strlen($row->Step3Des) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Step3Des); ?></textarea>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleInputName1">Step 3 Solution</label>
-                        <textarea name="Step3Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step3); ?></textarea>
-                        </div>
-                      
-                        <div class="form-group">
-                        <label for="exampleInputName1">Step 4 Description</label>
-                        <textarea name="step4des" rows="<?php echo ceil(strlen($row->Step4Des) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Step4Des); ?></textarea>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleInputName1">Step 4 Solution</label>
-                        <textarea name="Step4Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step4); ?></textarea>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleInputName1">Step 5 Description</label>
-                        <textarea name="step5des" rows="<?php echo ceil(strlen($row->Step5Des) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->Step5Des); ?></textarea>
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleInputName1">Step 5 Solution</label>
-                        <textarea name="Step5Sol" rows=8 class="form-control" ><?php echo htmlentities($row->Step5); ?></textarea>
-                        </div>
-                        
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
+    <?php if (!is_null($row->{"Step{$i}Des"}) && $row->{"Step{$i}Des"} != ''): ?>
+        <div class="form-group">
+            <label for="exampleInputName1">Step <?php echo $i; ?> Description</label>
+            <textarea name="step<?php echo $i; ?>des" rows="<?php echo ceil(strlen($row->{"Step{$i}Des"}) / 50); ?>" class="form-control" readonly style="background-color: white;"><?php echo htmlentities($row->{"Step{$i}Des"}); ?></textarea>
+        </div>
+    <?php endif; ?>
+    <?php if (!is_null($row->{"Step{$i}Des"}) && $row->{"Step{$i}Des"} != ''): ?>
+        <div class="form-group">
+            <label for="exampleInputName1">Step <?php echo $i; ?> Solution</label>
+            <textarea name="Step<?php echo $i; ?>Sol" rows=8 class="form-control"><?php echo htmlentities($row->{"Step{$i}"}); ?></textarea>
+        </div>
+    <?php endif; ?>
+<?php endfor; ?>
                       <div class="text-center">
                       <button type="submit" class="btn btn-primary mr-2" name="choose">Save</button>
                       </div>
@@ -344,7 +319,7 @@ if (strlen($_SESSION['sturecmstuid']) == 0) {
   </div>
   <!-- page-body-wrapper ends -->
 </div>
-<script src="./js/inputValidation.js"></script>
+<script src="../js/inputValidation.js"></script>
 <!-- container-scroller -->
 <!-- plugins:js -->
 <script src="vendors/js/vendor.bundle.base.js"></script>
