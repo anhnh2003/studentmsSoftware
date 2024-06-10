@@ -66,7 +66,7 @@ echo '<script>alert("Your current password is wrong")</script>';
 <html lang="en">
   <head>
    
-    <title>Student  Management System|| Student Change Password</title>
+    <title>MathEx|| Student Change Password</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">

@@ -21,6 +21,10 @@ SET time_zone = "+00:00";
 -- Database: `studentmsdb`
 --
 
+CREATE DATABASE IF NOT EXISTS studentmsdb ;
+
+USE studentmsdb;
+
 -- --------------------------------------------------------
 
 --
@@ -128,8 +132,8 @@ CREATE TABLE `tblpage` (
 --
 
 INSERT INTO `tblpage` (`ID`, `PageType`, `PageTitle`, `PageDescription`, `Email`, `ContactNumber`, `UpdationDate`) VALUES
-(1, 'aboutus', 'About Us', '<div style=\"text-align: start;\"><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"6\"><b style=\"\">Project 13 - Secure Web Programming Course</b></font></div><div style=\"text-align: start;\"><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Members:</font></div><div style=\"text-align: start;\"><ul><li><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Nguyen Quoc Huy</font></li><li><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Duong Hong Nam</font></li><li><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Nguyen Hoang Anh</font></li><li><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Le Duc Dung</font></li></ul></div>', NULL, NULL, NULL),
-(2, 'contactus', 'Contact Us', '890,Sector 62, Gyan Sarovar, GAIL Noida(Delhi/NCR)', 'infodata@gmail.com', 7896541236, NULL);
+(1, 'aboutus', 'About Us', '<div style=\"text-align: start;\"><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"6\"><b style=\"\">We are add1c7</b></font></div><div style=\"text-align: start;\"><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Members:</font></div><div style=\"text-align: start;\"><ul><li><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Dang Manh Cuong</font></li><li><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Nguyen Hoang Anh</font></li><li><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Nguyen Viet Quy Anh</font></li><li><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Trinh Truong Giang</font></li></li><li><font color=\"#7b8898\" face=\"Mercury SSm A, Mercury SSm B, Georgia, Times, Times New Roman, Microsoft YaHei New, Microsoft Yahei, ????, ??, SimSun, STXihei, ????, serif\" size=\"5\">Bui Hai Duong</font></li></ul></div>', NULL, NULL, NULL),
+(2, 'contactus', 'Contact Us', '890,Sector 62, Gyan Sarovar, GAIL Noida(Delhi/NCR)', 'cuong.dm214949@sis.hust.edu.vn', 0123456789, NULL);
 
 -- --------------------------------------------------------
 
@@ -149,8 +153,7 @@ CREATE TABLE `tblpublicnotice` (
 --
 
 INSERT INTO `tblpublicnotice` (`ID`, `NoticeTitle`, `NoticeMessage`, `CreationTime`) VALUES
-(1, 'School will re-open', 'Please prepare your learning resource.', '2024-01-20 09:11:57'),
-(2, 'Scholarship Year 2024', 'Results for this year\'s Scholarship is being sent through student\'s email! Due date for any inquiry is May 20th.', '2024-04-02 19:04:10');
+(1, 'Project defense is incoming', 'Please complete your work before the deadline.', '2024-05-20 09:11:57');
 
 -- --------------------------------------------------------
 
